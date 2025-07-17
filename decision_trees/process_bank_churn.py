@@ -97,7 +97,7 @@ def encode_categorical_features(data: dict, categorical_cols: List[str]) -> Tupl
 def preprocess_data(
     raw_df: pd.DataFrame,
     scaler_numeric: bool = True
-) -> Tuple[pd.DataFrame, pd.Series, pd.DataFrame, pd.Series, List[str], Optional[MinMaxScaler], OneHotEncoder]:
+) -> Tuple[pd.DataFrame, pd.Series, pd.DataFrame, pd.Series, List[str], Optional[MinMaxScaler], OneHotEncoder, List[str], List[str]]:
     """
     Preprocess raw bank churn dataset.
 
@@ -119,9 +119,11 @@ def preprocess_data(
             - train_targets (pd.Series)
             - X_val (pd.DataFrame)
             - val_targets (pd.Series)
-            - input_cols (List[str])
+            - input_cols (List[str]): Final input column names after preprocessing
             - scaler (Optional[MinMaxScaler])
             - encoder (OneHotEncoder)
+            - numeric_cols (List[str]): Original numeric column names
+            - categorical_cols (List[str]): Original categorical column names
     """
     raw_df = drop_na_values(raw_df, ['Exited'])
 
@@ -156,7 +158,7 @@ def preprocess_data(
     X_val = data['val_inputs'][full_input_cols]
     val_targets = data['val_targets']
 
-    return X_train, train_targets, X_val, val_targets, full_input_cols, scaler, encoder
+    return X_train, train_targets, X_val, val_targets, full_input_cols, scaler, encoder, numeric_cols, categorical_cols
 
 
 def preprocess_new_data(
@@ -169,32 +171,46 @@ def preprocess_new_data(
     scale_numeric: bool = True
 ) -> pd.DataFrame:
     """
-    Preprocess new (test or prediction) data using already fitted scaler and encoder.
+    Preprocess new data using fitted transformers.
 
     Args:
-        new_df (pd.DataFrame): New raw data to preprocess.
-        input_cols (List[str]): List of expected input columns.
-        scaler (Optional[MinMaxScaler]): Fitted scaler or None if scaling is skipped.
-        encoder (OneHotEncoder): Fitted encoder.
-        numeric_cols (List[str]): List of numeric columns.
-        categorical_cols (List[str]): List of categorical columns.
+        new_df (pd.DataFrame): New data to preprocess.
+        input_cols (List[str]): Final input column names after preprocessing.
+        scaler (Optional[MinMaxScaler]): Fitted scaler for numeric features.
+        encoder (OneHotEncoder): Fitted encoder for categorical features.
+        numeric_cols (List[str]): Original numeric column names.
+        categorical_cols (List[str]): Original categorical column names.
         scale_numeric (bool): Whether to scale numeric features.
 
     Returns:
-        pd.DataFrame: Preprocessed input DataFrame ready for prediction.
+        pd.DataFrame: Preprocessed DataFrame ready for prediction.
     """
     new_df = new_df.copy()
 
     if 'Surname' in new_df.columns:
         new_df = new_df.drop(columns=['Surname'])
 
-    inputs = new_df[input_cols].copy()
+    numeric_data = new_df[numeric_cols].copy()
+    categorical_data = new_df[categorical_cols].copy()
 
     if scale_numeric and scaler is not None:
-        inputs[numeric_cols] = scaler.transform(inputs[numeric_cols])
+        numeric_data = pd.DataFrame(
+            scaler.transform(numeric_data),
+            columns=numeric_cols,
+            index=new_df.index
+        )
 
-    encoded = encoder.transform(inputs[categorical_cols])
-    encoded_df = pd.DataFrame(encoded, columns=encoder.get_feature_names_out(categorical_cols), index=inputs.index)
-    inputs = pd.concat([inputs.drop(columns=categorical_cols), encoded_df], axis=1)
+    
+    encoded = encoder.transform(categorical_data)
+    encoded_cols = encoder.get_feature_names_out(categorical_cols)
+    encoded_df = pd.DataFrame(encoded, columns=encoded_cols, index=new_df.index)
 
-    return inputs
+    processed_df = pd.concat([numeric_data, encoded_df], axis=1)
+
+    missing_cols = set(input_cols) - set(processed_df.columns)
+    for col in missing_cols:
+        processed_df[col] = 0
+
+    processed_df = processed_df[input_cols]
+
+    return processed_df
