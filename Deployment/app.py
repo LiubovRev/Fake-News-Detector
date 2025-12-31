@@ -2,6 +2,7 @@ import streamlit as st
 import joblib
 import pandas as pd
 import numpy as np
+import os
 
 # Налаштування сторінки
 st.set_page_config(page_title="Weather Predictor", page_icon="🌦️", layout="centered")
@@ -9,8 +10,13 @@ st.set_page_config(page_title="Weather Predictor", page_icon="🌦️", layout="
 # Функція для завантаження моделі та об'єктів препроцесингу
 @st.cache_resource
 def load_model_objects():
+    # Отримуємо шлях до папки, де лежить цей файл app.py
+    base_path = os.path.dirname(__file__)
+    # Вказуємо правильний шлях до файлу в папці models 
+    model_path = os.path.join(base_path, 'models', 'aussie_rain.joblib')
+    
     # Завантажуємо словник, який був збережений у лекції [cite: 6, 7]
-    model_data = joblib.load('aussie_rain.joblib')
+    model_data = joblib.load(model_path)
     return model_data
 
 # Ініціалізація даних
