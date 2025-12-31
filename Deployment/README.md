@@ -12,14 +12,15 @@ Streamlit-додаток для прогнозування ймовірност�
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
+```
 
 ## Структура проекту
 
-Deployment/
-│
-├── app.py
-├── requirements.txt
-├── README.md
-│
-└── models/
-    └── aussie_rain_pipeline.joblib
+Deployment/  
+│  
+├── app.py  
+├── requirements.txt  
+├── README.md  
+│  
+└── models/  
+    └── aussie_rain_pipeline.joblib  
