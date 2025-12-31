@@ -18,12 +18,12 @@ streamlit run app.py
 
 Deployment/  
 │  
-├── app.py
+├── app.py  
 ├── train_model.ipynb  
 ├── requirements.txt  
 ├── README.md  
 │  
 └── models/  
-    └── aussie_rain_pipeline.joblib  
+    └── rain_model.pkl  
 └── data/  
     └── weatherAUS.csv 
