@@ -1,11 +1,8 @@
 Deployment/
 │
-├── app.py                     # Streamlit додаток
+├── app.py
 ├── requirements.txt
 ├── README.md
 │
-├── models/
-│   └── aussie_rain.joblib     # або pipeline
-│
-└── utils/
-    └── preprocessing.py      # (якщо НЕ pipeline)
+└── models/
+    └── aussie_rain_pipeline.joblib
