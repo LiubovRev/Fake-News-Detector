@@ -24,6 +24,6 @@ Deployment/
 ├── README.md  
 │  
 └── models/  
-    └── rain_model.pkl  
+         └── rain_model.pkl  
 └── data/  
-    └── weatherAUS.csv 
+         └── weatherAUS.csv 
