@@ -1,33 +1,32 @@
-🌧️ Rain Tomorrow Prediction: End-to-End ML Pipeline
-🚀 Live Demo on Streamlit
+# 🌧️ Rain Tomorrow Prediction: End-to-End ML Pipeline
+
+### [🚀 Live Demo on Streamlit](https://mlhometasks-hpttpgdx7cjxsnwemqrz7b.streamlit.app/)
 
 This repository features a complete Machine Learning workflow, from data exploration and model training to deploying a web-based application. The project predicts the probability of rainfall in Australia for the following day based on historical meteorological data.
-📋 Project Overview
 
+---
+
+## 📋 Project Overview
 The goal of this project is to build a robust classification model to handle imbalanced weather data and provide real-time predictions via a user-friendly interface.
-Key Features:
 
-    Data Preprocessing: Handled missing values and categorical encoding using Scikit-learn Pipelines.
+### Key Features:
+* **Data Preprocessing:** Robust handling of missing values and categorical encoding using **Scikit-learn Pipelines**.
+* **Model:** **Random Forest Classifier** optimized for binary classification performance.
+* **Deployment:** Interactive web application built with **Streamlit** and served via Streamlit Cloud.
+* **Reproducibility:** Serialized model using `pickle` to ensure consistent inference across environments.
 
-    Model: Random Forest Classifier optimized for binary classification.
+---
 
-    Deployment: Interactive web app built with Streamlit and served via Streamlit Cloud.
+## 🛠️ Tech Stack
+* **Language:** Python
+* **ML Framework:** Scikit-learn (Random Forest, Pipeline, Imputers)
+* **Data Analysis:** Pandas, NumPy
+* **Deployment:** Streamlit
 
-    Reproducibility: Serialized model using pickle for consistent inference.
+---
 
-🛠️ Tech Stack
-
-    Language: Python
-
-    ML Framework: Scikit-learn (Random Forest, Pipeline, Imputers)
-
-    Data Analysis: Pandas, NumPy
-
-    Deployment: Streamlit
-
-📂 Project Structure
-Plaintext
-
+## 📂 Project Structure
+```plaintext
 Deployment/  
 │  
 ├── app.py                # Streamlit application script
@@ -39,27 +38,29 @@ Deployment/
 │   └── rain_model.pkl    # Serialized Random Forest model
 └── data/  
     └── weatherAUS.csv    # Dataset source (Kaggle: Weather in Australia)
+```
+---
 
-🚀 Local Setup
+## 🚀 Local Setup
 
 To run this project locally, follow these steps:
 
-    Clone the repository:
-    Bash
-
-git clone https://github.com/LiubovRev/Rain-Tomorrow-Prediction.git
+Clone the repository:
+```
+git clone [https://github.com/LiubovRev/Rain-Tomorrow-Prediction.git](https://github.com/LiubovRev/Rain-Tomorrow-Prediction.git)
 cd Rain-Tomorrow-Prediction/Deployment
+```
 
 Install dependencies:
-Bash
-
+```
 pip install -r requirements.txt
+```
 
 Launch the App:
-Bash
+```
+ streamlit run app.py
+```
 
-    streamlit run app.py
+## 📊 Methodology & Performance
 
-📊 Model Performance
-
-In the train_model.ipynb, the model was evaluated using accuracy, precision, and recall to ensure reliability despite the class imbalance typical of rainfall datasets.
+In the `train_model.ipynb`, the model was evaluated using precision-recall curves and F1-scores to ensure reliability despite the class imbalance typical of rainfall datasets. The use of a Pipeline ensures that the preprocessing steps applied to the training data are identical to those applied to user inputs in the production app.
