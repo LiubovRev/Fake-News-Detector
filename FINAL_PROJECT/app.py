@@ -5,8 +5,8 @@ import requests
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
 # --- CONFIGURATION ---
-MODEL_URL = "https://github.com/LiubovRev/ML_hometasks/releases/tag/v1.0.0"
-CONFIG_URL = "https://github.com/LiubovRev/ML_hometasks/blob/main/FINAL_PROJECT/models/config.json"
+MODEL_URL = "https://github.com/LiubovRev/ML_hometasks/releases/download/v1.0.0/model.safetensors"
+CONFIG_URL = "https://github.com/LiubovRev/ML_hometasks/releases/download/v1.0.0/config.json"
 # Add tokenizer files if they are not in your main repo
 MODEL_DIR = "./models"
 
