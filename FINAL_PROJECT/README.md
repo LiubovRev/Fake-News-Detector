@@ -10,7 +10,7 @@ This is a deep learning–based fake news detection system built using a fine-tu
 ## Features
 
 - Binary fake news classification
-- DistilBERT transformer model
+- DistilBERT transformer model 
 - High accuracy (F1 ≈ 0.997)
 - Fast inference (~200ms)
 - Streamlit-based web UI
@@ -29,6 +29,8 @@ This is a deep learning–based fake news detection system built using a fine-tu
 ---
 
 ## Model
+
+The trained DistilBERT model (86MB) can be downloaded from the Releases section.
 
 - **Architecture:** DistilBERT
 - **Task:** Text classification
