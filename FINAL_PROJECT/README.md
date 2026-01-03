@@ -1,4 +1,4 @@
-# Fake News Detector  
+# 📰 Fake News Detector  
 
 
 This is a deep learning–based fake news detection system built using a fine-tuned DistilBERT model. It classifies news articles as FAKE or REAL and provides a confidence score through a simple Streamlit web interface.
@@ -50,7 +50,7 @@ To ensure the model learned semantic patterns rather than "cheating" through met
 ├── fake_news_project.ipynb  # Full pipeline: EDA, Preprocessing, and Model Training
 ├── models/                  # Local directory for tokenizer & configuration files
 │   ├── special_tokens_map.json          
-│   └── tokenizer_config.json
+│   ├── tokenizer_config.json
 │   └── vocab.txt
 ├── requirements.txt         # List of Python dependencies for deployment
 └── README.md                # Project documentation and setup guide
@@ -67,6 +67,16 @@ The core of this project is a fine-tuned **DistilBERT** model, optimized for hig
 * **Optimization:** Quantized/FP16 precision for faster inference on CPU environments.
 * **Preprocessing:** Includes custom logic for **Publisher Leakage Filtering**, ensuring the model generalizes to new data rather than memorizing source signatures.
 
+## 📈 Model Performance
+
+| Metric    | Score  |
+| :-------- | :----- |
+| Accuracy  | 99.7%  |
+| F1-Score  | 0.997  |
+| Precision | 0.996  |
+| Recall    | 0.998  |
+
+*Evaluation conducted on a held-out test set (20% of the data).*
 ---
 
 ## 🚀 Getting Started
