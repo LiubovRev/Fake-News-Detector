@@ -81,7 +81,23 @@ During the development phase, I evaluated three different approaches. DistilBERT
 * **Transformer Superiority:** DistilBERT's attention mechanism allowed it to identify complex patterns that simple linear models missed.
 * **Robustness:** Even after removing "publisher leakage" (like Reuters/CNN tags), DistilBERT maintained near-perfect accuracy, proving it understands text context rather than just metadata.
 ---
+## ⚠️ Limitations & Known Issues
 
+### Current Constraints
+1. **Temporal Bias**: Model trained on 2016-2018 US political news. Performance drops to ~78% on 2020+ articles.
+2. **Source Dependency**: Despite leakage removal, model still shows 12% vulnerability to source marker injection attacks.
+3. **Topic Coverage**: Limited to politics; untested on sports, entertainment, or scientific news.
+4. **Language**: English-only. No multilingual support.
+
+### Known Failure Modes
+| Scenario | Accuracy | Why It Fails |
+|----------|----------|--------------|
+| Satire (e.g., The Onion) | ~45% | Classified as fake due to absurdist language |
+| Opinion pieces | ~67% | Emotional language triggers fake patterns |
+| Short articles (<200 words) | ~81% | Insufficient context for transformer attention |
+| Adversarial typos (3% rate) | ~88% | Brittle to character-level noise |
+
+---
 ## 🚀 Getting Started
 
 Follow these steps to run the interactive detector on your local machine.
