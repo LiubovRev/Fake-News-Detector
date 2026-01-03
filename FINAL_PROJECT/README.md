@@ -44,11 +44,11 @@ This is a deep learning–based fake news detection system built using a fine-tu
 pip install -r requirements.txt
 ```
 
-# Run the app
+## Run the app
 ```bash
 streamlit run app.py
 ```
 
-# Notes
+## Notes
 
 This project is for educational and research purposes. Predictions are probabilistic and not guarantees of factual accuracy.
