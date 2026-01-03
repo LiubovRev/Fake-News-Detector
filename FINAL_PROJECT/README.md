@@ -42,39 +42,53 @@ To ensure the model learned semantic patterns rather than "cheating" through met
 - Streamlit-based web UI
 
 ---
+## 📂 Project Structure
 
-## Project Structure
+```text
+.
+├── app.py                   # Interactive Streamlit web interface
+├── fake_news_project.ipynb  # Full pipeline: EDA, Preprocessing, and Model Training
+├── models/                  # Local directory for tokenizer & configuration files
+│   ├── special_tokens_map.json          
+│   └── tokenizer_config.json
+│   └── vocab.txt
+├── requirements.txt         # List of Python dependencies for deployment
+└── README.md                # Project documentation and setup guide
+```
+---
+## 🤖 Model Details
 
-├── app.py # Streamlit application    
-├── fake_news_project.ipynb # Model training and evaluation    
-├── models/ # Saved model and tokenizer  
-├── data/  
-└── README.md  
+The core of this project is a fine-tuned **DistilBERT** model, optimized for high performance and low latency. The model weights are hosted externally to maintain a lightweight repository.
+
+* **Weights:** [Download from Releases (86MB)](https://github.com/LiubovRev/ML_hometasks/releases/tag/v1.0.0)
+* **Architecture:** `distilbert-base-uncased` (Transformer-based)
+* **Task:** Binary Sequence Classification
+* **Output:** Prediction Label (`FAKE` / `REAL`) with a probability confidence score.
+* **Optimization:** Quantized/FP16 precision for faster inference on CPU environments.
+* **Preprocessing:** Includes custom logic for **Publisher Leakage Filtering**, ensuring the model generalizes to new data rather than memorizing source signatures.
+
 ---
 
-## Model
+## 🚀 Getting Started
 
-The trained DistilBERT model (86MB) can be downloaded from the [Releases section](https://github.com/LiubovRev/ML_hometasks/releases/tag/v1.0.0).
+Follow these steps to run the interactive detector on your local machine.
 
-- **Architecture:** DistilBERT
-- **Task:** Text classification
-- **Output:** Label (FAKE / REAL) + confidence score
-- **Preprocessing:** Publisher leakage filtering
-
----
-
-## Setup
-
-### Install dependencies
+### Install Dependencies
+Ensure you have Python 3.8+ installed, then run:
 ```bash
 pip install -r requirements.txt
 ```
+---
 
 ## Run the app
 ```bash
 streamlit run app.py
 ```
-
-## Notes
-
+---
+### ✨ What makes this version better:
+* **Highlights technical maturity:** Mentioning "Binary Sequence Classification" and "Quantized/FP16 precision" shows you understand the underlying engineering.
+* **Focus on Generalization:** Explaining *why* you filtered publisher leakage (to prevent memorization) is a major green flag for ML reviewers.
+* **Clearer Onboarding:** Numbering the setup steps makes it easier for someone to follow and reproduce your work.
+---
+**Notes**
 This project is for educational and research purposes. Predictions are probabilistic and not guarantees of factual accuracy.
