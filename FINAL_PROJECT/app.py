@@ -1,41 +1,70 @@
 import streamlit as st
-from model_utils import FakeNewsPredictor
+import torch
+import os
+import requests
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
-st.set_page_config(page_title="GuardianAI: Fake News Detector", page_icon="🛡️")
+# --- CONFIGURATION ---
+MODEL_URL = "https://github.com/LiubovRev/ML_hometasks/releases/tag/v1.0.0"
+CONFIG_URL = "https://github.com/LiubovRev/ML_hometasks/blob/main/FINAL_PROJECT/models/config.json"
+# Add tokenizer files if they are not in your main repo
+MODEL_DIR = "./models"
 
-# Use cache to load the model only once
+st.set_page_config(page_title="Fake News Detector", page_icon="🔍")
+
+def download_file(url, destination):
+    if not os.path.exists(destination):
+        with st.spinner(f"Downloading {os.path.basename(destination)}..."):
+            response = requests.get(url, stream=True)
+            with open(destination, "wb") as f:
+                for chunk in response.iter_content(chunk_size=8192):
+                    f.write(chunk)
+
 @st.cache_resource
-def get_predictor():
-    return FakeNewsPredictor("./models")
+def load_model():
+    if not os.path.exists(MODEL_DIR):
+        os.makedirs(MODEL_DIR)
+    
+    # Download weights and config to local directory
+    download_file(MODEL_URL, os.path.join(MODEL_DIR, "model.safetensors"))
+    download_file(CONFIG_URL, os.path.join(MODEL_DIR, "config.json"))
+    
+    # Load from the local directory
+    tokenizer = AutoTokenizer.from_pretrained(MODEL_DIR)
+    model = AutoModelForSequenceClassification.from_pretrained(MODEL_DIR)
+    return tokenizer, model
 
-st.title("🛡️ GuardianAI")
-st.subheader("Deep Learning Based Misinformation Detection")
+# --- UI ---
+st.title("📰 Fake News Detector")
+st.write("Enter a news article below to check if it's Real or Fake using DistilBERT.")
 
-text_input = st.text_area("Enter news article text here:", height=300, 
-                          placeholder="Paste the full text of the article...")
+try:
+    tokenizer, model = load_model()
+    st.success("Model loaded successfully!")
+except Exception as e:
+    st.error(f"Error loading model: {e}")
+    st.stop()
 
-if st.button("Verify Authenticity"):
-    if not text_input.strip():
-        st.warning("Please enter some text first.")
+user_input = st.text_area("Article Text:", height=200, placeholder="Paste news content here...")
+
+if st.button("Predict"):
+    if user_input.strip():
+        # Tokenize
+        inputs = tokenizer(user_input, return_tensors="pt", truncation=True, max_length=512)
+        
+        # Inference
+        with torch.no_grad():
+            outputs = model(**inputs)
+            probs = torch.nn.functional.softmax(outputs.logits, dim=-1)
+            pred = torch.argmax(probs).item()
+            conf = probs[0][pred].item()
+
+        # Results (Assuming 0: Fake, 1: Real based on your project)
+        label = "REAL" if pred == 1 else "FAKE"
+        color = "green" if label == "REAL" else "red"
+
+        st.subheader(f"Prediction: :{color}[{label}]")
+        st.write(f"Confidence Score: **{conf:.2%}**")
+        st.progress(conf)
     else:
-        predictor = get_predictor()
-        with st.spinner('Analyzing linguistic patterns and context...'):
-            label, confidence = predictor.predict(text_input)
-            
-        st.divider()
-        if label == "FAKE":
-            st.error(f"### Result: {label}")
-            st.progress(confidence)
-            st.write(f"The model is **{confidence:.2%}** certain this is misinformation.")
-        else:
-            st.success(f"### Result: {label}")
-            st.progress(confidence)
-            st.write(f"The model is **{confidence:.2%}** certain this is a factual report.")
-
-st.sidebar.markdown("""
-### Model Specifications
-- **Architecture:** DistilBERT
-- **Training F1-Score:** 0.997
-- **Inference Speed:** ~200ms
-- **Preprocessing:** Anti-Leakage Filter (Reuters/AP)
-""")
+        st.warning("Please enter some text first.")
