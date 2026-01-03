@@ -7,6 +7,20 @@ This is a deep learning–based fake news detection system built using a fine-tu
 [STREAMLIT LIVE-DEMO](https://fwssuuuutqxmdjczkeasw8.streamlit.app/) 
 ---
 
+## Dataset
+The dataset used for this project is a collection of real and fake news articles. It contains thousands of records where each entry includes the article title, text, and date.
+
+- **Source:** [Download from Google Drive](https://drive.google.com/file/d/16BERzRTy-EKFcJ-WuEVlzVkSWnyQkafQ/view?usp=sharing)
+- **Format:** CSV
+- **Features:**
+  - `title`: The headline of the article.
+  - `text`: The full body of the news story.
+  - `subject`: The category of the news (e.g., Politics, World News).
+  - `date`: Publication date.
+- **Target:** - `0`: Fake News
+  - `1`: Real News
+---
+
 ## Features
 
 - Binary fake news classification
@@ -24,8 +38,6 @@ This is a deep learning–based fake news detection system built using a fine-tu
 ├── models/ # Saved model and tokenizer  
 ├── data/  
 └── README.md  
-
-
 ---
 
 ## Model
