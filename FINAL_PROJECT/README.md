@@ -84,11 +84,7 @@ pip install -r requirements.txt
 ```bash
 streamlit run app.py
 ```
----
-### ✨ What makes this version better:
-* **Highlights technical maturity:** Mentioning "Binary Sequence Classification" and "Quantized/FP16 precision" shows you understand the underlying engineering.
-* **Focus on Generalization:** Explaining *why* you filtered publisher leakage (to prevent memorization) is a major green flag for ML reviewers.
-* **Clearer Onboarding:** Numbering the setup steps makes it easier for someone to follow and reproduce your work.
+
 ---
 **Notes**
 This project is for educational and research purposes. Predictions are probabilistic and not guarantees of factual accuracy.
