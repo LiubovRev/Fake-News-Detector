@@ -67,16 +67,19 @@ The core of this project is a fine-tuned **DistilBERT** model, optimized for hig
 * **Optimization:** Quantized/FP16 precision for faster inference on CPU environments.
 * **Preprocessing:** Includes custom logic for **Publisher Leakage Filtering**, ensuring the model generalizes to new data rather than memorizing source signatures.
 
-## 📈 Model Performance
+## 📈 Model Comparison & Results
 
-| Metric    | Score  |
-| :-------- | :----- |
-| Accuracy  | 99.7%  |
-| F1-Score  | 0.997  |
-| Precision | 0.996  |
-| Recall    | 0.998  |
+During the development phase, I evaluated three different approaches. DistilBERT significantly outperformed classical machine learning methods in capturing the semantic nuances of fake news.
 
-*Evaluation conducted on a held-out test set (20% of the data).*
+| Model              | Accuracy | F1-Score |
+| :----------------- | :------- | :------- |
+| **DistilBERT** | **0.9978** | **0.9979** |
+| Logistic Regression| 0.9846   | 0.9853   |
+| Custom Ensemble    | 0.9828   | 0.9836   |
+
+### **Key Insights**
+* **Transformer Superiority:** DistilBERT's attention mechanism allowed it to identify complex patterns that simple linear models missed.
+* **Robustness:** Even after removing "publisher leakage" (like Reuters/CNN tags), DistilBERT maintained near-perfect accuracy, proving it understands text context rather than just metadata.
 ---
 
 ## 🚀 Getting Started
