@@ -30,7 +30,7 @@ This is a deep learning–based fake news detection system built using a fine-tu
 
 ## Model
 
-The trained DistilBERT model (86MB) can be downloaded from the Releases section.
+The trained DistilBERT model (86MB) can be downloaded from the [Releases section](https://github.com/LiubovRev/ML_hometasks/releases/tag/v1.0.0).
 
 - **Architecture:** DistilBERT
 - **Task:** Text classification
