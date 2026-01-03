@@ -4,7 +4,7 @@
 This is a deep learning–based fake news detection system built using a fine-tuned DistilBERT model. It classifies news articles as FAKE or REAL and provides a confidence score through a simple Streamlit web interface.
 
 ---
-**LIVE-DEMO**
+[LIVE-DEMO](https://fwssuuuutqxmdjczkeasw8.streamlit.app/) 
 ---
 
 ## Features
