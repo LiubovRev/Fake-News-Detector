@@ -1,0 +1,17 @@
+# Web Interface
+streamlit>=1.25.0
+
+# Deep Learning Frameworks
+torch>=2.0.0
+transformers>=4.30.0
+
+# Data Manipulation
+pandas
+numpy
+
+# Visualization (optional, for EDA plots in app)
+matplotlib
+seaborn
+
+# Standard library helpers
+scikit-learn
