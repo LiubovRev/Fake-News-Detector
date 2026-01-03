@@ -7,18 +7,30 @@ This is a deep learning–based fake news detection system built using a fine-tu
 [STREAMLIT LIVE-DEMO](https://fwssuuuutqxmdjczkeasw8.streamlit.app/) 
 ---
 
-## Dataset
-The dataset used for this project is a collection of real and fake news articles. It contains thousands of records where each entry includes the article title, text, and date.
+## 📊 Dataset Overview
 
-- **Source:** [Download from Google Drive](https://drive.google.com/file/d/16BERzRTy-EKFcJ-WuEVlzVkSWnyQkafQ/view?usp=sharing)
-- **Format:** CSV
-- **Features:**
-  - `title`: The headline of the article.
-  - `text`: The full body of the news story.
-  - `subject`: The category of the news (e.g., Politics, World News).
-  - `date`: Publication date.
-- **Target:** - `0`: Fake News
-  - `1`: Real News
+The dataset is a comprehensive collection of real and fake news articles used to train and validate the detection models. It consists of over **40,000 labeled records**, providing a balanced foundation for linguistic analysis.
+
+### **Data Specifications**
+* **Source:** [Download from Google Drive](https://drive.google.com/file/d/16BERzRTy-EKFcJ-WuEVlzVkSWnyQkafQ/view?usp=sharing)
+* **Format:** Structured CSV
+* **Labels:** * `0`: **Fake News** (Fabricated or misleading content)
+    * `1`: **Real News** (Verified factual reporting)
+
+### **Key Features**
+| Feature | Description |
+| :--- | :--- |
+| **title** | The headline of the article (analyzed for capitalization ratios). |
+| **text** | The full body content (primary input for DistilBERT). |
+| **subject** | News category (Politics, World News, Government, etc.). |
+| **date** | Original publication timestamp. |
+
+### **Pre-processing Highlights**
+To ensure the model learned semantic patterns rather than "cheating" through metadata, the following steps were taken:
+
+1. **Leakage Removal:** Stripped source-specific markers (e.g., "Reuters") and location tags that were present primarily in real news.
+2. **Text Normalization:** Lowercasing, removal of special characters, and whitespace optimization.
+3. **Feature Engineering:** Created a `title_caps_ratio` feature to capture the tendency of fake news to use "clickbait" capitalization.
 ---
 
 ## Features
