@@ -9,6 +9,8 @@ from nltk.corpus import wordnet
 import os
 import random
 
+from collections import Counter
+
 import zipfile
 import requests
 import seaborn as sns
@@ -273,7 +275,7 @@ def tokenize_single(text):
         max_length=256,
         return_tensors="pt"
     )
-    return SingleTextDataset(enc
+    return SingleTextDataset(enc)
 
 
 def add_typos(text, rate=0.05):
@@ -394,29 +396,3 @@ def predict_label_with_confidence(text, tokenizer, model, device):
 
     return label, confidence
 
-        if (
-            word.lower() in STOPWORDS
-            or word.lower() in string.punctuation
-            or len(word) < 4
-            or random.random() > rate
-        ):
-            continue
-
-        wn_pos = get_wordnet_pos(tag)
-        if not wn_pos:
-            continue
-
-        synonyms = clean_synonyms(word, wn_pos)
-        if not synonyms:
-            continue
-
-        replacement = random.choice(synonyms)
-
-        # Preserve capitalization
-        if word[0].isupper():
-            replacement = replacement.capitalize()
-
-        new_tokens[i] = replacement
-        changes += 1
-
-    return " ".join(new_tokens)
