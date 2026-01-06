@@ -49,14 +49,12 @@ While achieving 99.99% test accuracy, this project reveals a critical insight ab
 ```
 fake_news_detection/
 │
-├── fake_news_project.ipynb        # Experiment notebook 
-├── README.md                      # This file
-├── requirements.txt               # Python dependencies
+├── fake_news_project.ipynb        # Main notebook 
 ├── utils.py                       # Helper functions for preprocessing and evaluation
+├── requirements.txt               # Python dependencies                     
 │
-├── data/                        
-│   ├── fake_news_full_data.zip    # Raw dataset
-│   └── cleaned_news_data.zip      # Preprocessed dataset
+├── data/                           
+│   └── readme.md                 # Raw and preprocessed datasets links
 │
 ├── models/                        # Saved model artifacts
 │   ├── special_tokens_map.json    
@@ -70,7 +68,7 @@ fake_news_detection/
 │   ├── bigram_comparison_bert.png
 │   └── final_results_dashboard.png
 │
-└── utils.py                       # Helper functions for preprocessing and evaluation
+└── README.md                      # This file
 ```
 
 ## 🔧 Installation <a name="installation"></a>
