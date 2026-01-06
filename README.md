@@ -2,7 +2,7 @@
 
 
 A comprehensive machine learning pipeline for detecting fake news articles using natural language processing, classical ML algorithms, and deep learning transformers. This project demonstrates the complete data science workflow from exploratory analysis through model deployment considerations, with emphasis on robustness testing and real-world limitations.
-
+[STREAMLIT LIVE DEMO](https://gzfkkcfm3gljfrkazqdjcd.streamlit.app/)
 ## 📋 Table of Contents
 
 - [Overview](#overview)
@@ -235,7 +235,7 @@ Custom aggregated dataset of 44,680 news articles (38,227 after cleaning) from v
 - **Strengths**: Captures non-linear feature interactions
 - **Error Reduction**: 75% fewer errors than baseline
 
-### 4. DistilBERT (Deep Learning) ⭐
+### 4. DistilBERT (Deep Learning) [Download Model](https://github.com/LiubovRev/Fake-News-Detector/releases/tag/v3)
 - **Architecture**: 6-layer transformer with 66M parameters
 - **Training**: 3 epochs, batch size 16, learning rate 2e-5
 - **Performance**: 99.99% accuracy, 0.9999 F1-score
