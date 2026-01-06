@@ -2,7 +2,7 @@
 
 
 A comprehensive machine learning pipeline for detecting fake news articles using natural language processing, classical ML algorithms, and deep learning transformers. This project demonstrates the complete data science workflow from exploratory analysis through model deployment considerations, with emphasis on robustness testing and real-world limitations.
----
+
 ## 📋 Table of Contents
 
 - [Overview](#overview)
@@ -20,7 +20,7 @@ A comprehensive machine learning pipeline for detecting fake news articles using
 - [Next Steps](#next-steps)
 
 
-## 🎯 Overview
+## 🎯 Overview <a name="overview"></a>
 
 This project implements a complete machine learning experiment to classify news articles as fake or real based solely on text content and publication dates. The pipeline includes:
 
