@@ -51,15 +51,15 @@ While achieving 99.99% test accuracy, this project reveals a critical insight ab
 ```
 fake_news_detection/
 │
-├── fake_news_project.ipynb        # Complete experiment notebook 
+├── fake_news_project.ipynb        # Experiment notebook 
 ├── README.md                      # This file
 ├── requirements.txt               # Python dependencies
 ├── utils.py                       # Helper functions for preprocessing and evaluation
 ├── app.py                         # Streamlit deployment script
 │
 ├── data/                        
-│   ├── fake_news_full_data.zip        # Raw dataset
-│   └── cleaned_news_data.zip          # Preprocessed dataset
+│   ├── fake_news_full_data.zip    # Raw dataset
+│   └── cleaned_news_data.zip      # Preprocessed dataset
 │
 ├── models/                        # Saved model artifacts
 │   ├── special_tokens_map.json    
