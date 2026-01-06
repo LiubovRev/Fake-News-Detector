@@ -19,9 +19,8 @@ A comprehensive machine learning pipeline for detecting fake news articles using
 - [Visualizations](#visualizations)
 - [Critical Findings](#critical-findings)
 - [Usage Examples](#usage-examples)
-- [Contributing](#contributing)
-- [License](#license)
-- [Citation](#citation)
+- [Next Steps](#next-steps)
+
 
 ## 🎯 Overview
 
@@ -421,15 +420,16 @@ print("Top indicators of fake news:", [f for _, f in top_fake_features])
 print("Top indicators of real news:", [f for _, f in top_real_features])
 ```
 
-## 🤝 Contributing
+## 🤝 Next Steps
 
-Contributions are welcome! Areas for improvement:
+Areas for improvement:
 
-1. **Data Collection**: Expand dataset with diverse sources and time periods
-2. **Model Enhancements**: Implement multi-task learning or causal inference
-3. **Robustness**: Add more adversarial attack types
-4. **Explainability**: Integrate LIME/SHAP for interpretability
-5. **Deployment**: Build REST API and web interface
+1.  **More diverse data** – Cover multiple years, sources, and topics.
+2.  **Adversarial training** – Include typos, fake sources, and contrastive examples.
+3.  **Multi-task or hybrid models** – Combine fake/real detection with metadata or credibility signals.
+4.  **Calibration & confidence** – Improve uncertainty estimates and thresholds.
+5.  **Validation & continuous learning** – Test with users, monitor drift, and update models regularly.
+
 
 ### Development Setup
 
@@ -447,37 +447,3 @@ python -m pytest tests/
 # Submit pull request
 ```
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 📚 Citation
-
-If you use this project in your research, please cite:
-
-```bibtex
-@misc{fakenews2026,
-  author = {Your Name},
-  title = {Fake News Detection: A Complete Machine Learning Experiment},
-  year = {2026},
-  publisher = {GitHub},
-  url = {https://github.com/yourusername/fake-news-detection}
-}
-```
-
-## 🙏 Acknowledgments
-
-- **Transformers**: Hugging Face for DistilBERT implementation
-- **LIAR Dataset**: William Yang Wang for external validation data
-- **Inspiration**: Research on adversarial robustness in NLP
-
-## 📞 Contact
-
-For questions or collaboration opportunities:
-- Email: your.email@example.com
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your Name](https://linkedin.com/in/yourprofile)
-
----
-
-**⚠️ Disclaimer**: This model is for research and educational purposes only. It should NOT be used as the sole arbiter of truth. Always verify information through multiple credible sources and human expertise.
