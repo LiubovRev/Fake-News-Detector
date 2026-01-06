@@ -34,7 +34,7 @@ This project implements a complete machine learning experiment to classify news 
 
 While achieving 99.99% test accuracy, this project reveals a critical insight about modern NLP: **high accuracy doesn't guarantee real-world robustness**. Through adversarial testing, we demonstrate how models can exploit dataset artifacts while failing on the actual task, offering valuable lessons for production ML systems.
 
-## ✨ Key Features
+## ✨ Key Features <a name="key-features"></a>
 
 - **Complete ML Pipeline**: End-to-end workflow from data cleaning to deployment considerations
 - **Multiple Modeling Approaches**: Comparison of classical ML, ensemble methods, gradient boosting, and transformers
@@ -44,7 +44,7 @@ While achieving 99.99% test accuracy, this project reveals a critical insight ab
 - **Rich Visualizations**: EDA dashboards, confusion matrices, confidence distributions, and comparison plots
 - **Reproducible Research**: Seed fixing, detailed documentation, and modular code structure
 
-## 📁 Project Structure
+## 📁 Project Structure <a name="project-structure"></a>
 
 ```
 fake_news_detection/
@@ -73,7 +73,7 @@ fake_news_detection/
 └── utils.py                       # Helper functions for preprocessing and evaluation
 ```
 
-## 🔧 Installation
+## 🔧 Installation <a name="installation"></a>
 
 ### Prerequisites
 
@@ -81,7 +81,7 @@ fake_news_detection/
 - CUDA-capable GPU (optional, but recommended for BERT training)
 - 8GB+ RAM
 
-### Setup
+### Setup <a name="setup"></a>
 
 ```bash
 # Clone the repository
@@ -99,7 +99,7 @@ pip install -r requirements.txt
 python -c "import nltk; nltk.download('stopwords'); nltk.download('punkt'); nltk.download('wordnet')"
 ```
 
-### Requirements
+### Requirements <a name="requirements"></a>
 
 ```txt
 pandas>=1.5.0
@@ -114,7 +114,7 @@ torch>=2.0.0
 nltk>=3.8.0
 ```
 
-## 🚀 Quick Start
+## 🚀 Quick Start <a name="quick-start"></a>
 
 ### 1. Run the Complete Pipeline
 
@@ -185,7 +185,7 @@ label, conf = predict_news(text)
 print(f"Prediction: {label} (Confidence: {conf:.2%})")
 ```
 
-## 📊 Dataset
+## 📊 Dataset <a name="dataset"></a>
 
 ### Source
 Custom aggregated dataset of 44,680 news articles (38,227 after cleaning) from various sources spanning 2015-2017 ([Download](https://drive.google.com/file/d/16BERzRTy-EKFcJ-WuEVlzVkSWnyQkafQ/view))
@@ -213,7 +213,7 @@ Custom aggregated dataset of 44,680 news articles (38,227 after cleaning) from v
 - **Source Homogeneity**: Real news predominantly from Reuters
 - **Format Artifacts**: Systematic differences in article structure
 
-## 🤖 Models
+## 🤖 Models <a name="models"></a>
 
 ### 1. Logistic Regression (Baseline)
 - **Architecture**: TF-IDF + Linear Classifier
@@ -240,7 +240,7 @@ Custom aggregated dataset of 44,680 news articles (38,227 after cleaning) from v
 - **Strengths**: Contextual embeddings, semantic understanding
 - **Limitations**: Vulnerable to adversarial attacks (see below)
 
-## 📈 Results
+## 📈 Results <a name="results"></a>
 
 ### Model Comparison
 
@@ -258,7 +258,7 @@ Custom aggregated dataset of 44,680 news articles (38,227 after cleaning) from v
 - **Recall (Fake)**: 99.97% - Misses only 1 in 3,489 fake articles
 - **Confidence**: 99%+ on nearly all predictions
 
-## 🛡️ Robustness Testing
+## 🛡️ Robustness Testing <a name="robustness-testing"></a>
 
 ### Test 1: Cross-Domain Evaluation (LIAR Dataset)
 
@@ -301,7 +301,7 @@ Custom aggregated dataset of 44,680 news articles (38,227 after cleaning) from v
 
 **Interpretation**: Confirms shortcut learning—model doesn't process full semantic content
 
-## 📊 Visualizations
+## 📊 Visualizations <a name="visualizations"></a>
 
 ### Exploratory Data Analysis Dashboard
 ![EDA Dashboard](images/EDA.png)
@@ -328,7 +328,7 @@ Custom aggregated dataset of 44,680 news articles (38,227 after cleaning) from v
 3. DistilBERT confusion matrix
 4. Prediction confidence distribution
 
-## 🔍 Critical Findings
+## 🔍 Critical Findings <a name="critical-findings"></a>
 
 ### The Generalization Gap
 
@@ -347,18 +347,8 @@ Modern neural networks are **shortcut learners**: they exploit any available cor
 - **Spurious Correlation #2**: Fake news uses capitals → Model learns formatting
 - **Spurious Correlation #3**: Articles from 2017 → Model learns temporal patterns
 
-### Implications for Production Systems
 
-⚠️ **High test accuracy ≠ Real-world reliability**
-
-For deployment, you must:
-1. Test on multiple domains and time periods
-2. Implement adversarial evaluation pipelines
-3. Use confidence thresholding and human-in-the-loop systems
-4. Monitor for distribution shift and concept drift
-5. Provide transparent explanations for all predictions
-
-## 💻 Usage Examples
+## 💻 Usage Examples <a name="usage-examples"></a>
 
 ### Feature Engineering
 
@@ -409,7 +399,7 @@ print("Top indicators of fake news:", [f for _, f in top_fake_features])
 print("Top indicators of real news:", [f for _, f in top_real_features])
 ```
 
-## 🤝 Next Steps
+## 🤝 Next Steps <a name="next-steps"></a>
 
 Areas for improvement:
 
@@ -419,20 +409,4 @@ Areas for improvement:
 4.  **Calibration & confidence** – Improve uncertainty estimates and thresholds.
 5.  **Validation & continuous learning** – Test with users, monitor drift, and update models regularly.
 
-
-### Development Setup
-
-```bash
-# Fork and clone
-git clone https://github.com/yourusername/fake-news-detection.git
-cd fake-news-detection
-
-# Create feature branch
-git checkout -b feature/your-feature-name
-
-# Make changes and test
-python -m pytest tests/
-
-# Submit pull request
-```
 
