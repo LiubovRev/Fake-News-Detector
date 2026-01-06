@@ -50,25 +50,27 @@ While achieving 99.99% test accuracy, this project reveals a critical insight ab
 ```
 fake_news_detection/
 │
-├── fake_news_project.pdf          # Complete experiment notebook (exported)
-├── fake_news_full_data.csv        # Raw dataset
-├── cleaned_news_data.tsv          # Preprocessed dataset
+├── fake_news_project.ipynb        # Complete experiment notebook 
 ├── README.md                      # This file
 ├── requirements.txt               # Python dependencies
+├── utils.py                       # Helper functions for preprocessing and evaluation
+├── app.py                         # Streamlit deployment script
+│
+├── data/                        
+│   ├── fake_news_full_data.zip        # Raw dataset
+│   └── cleaned_news_data.zip          # Preprocessed dataset
 │
 ├── models/                        # Saved model artifacts
-│   ├── model.safetensors         # Fine-tuned DistilBERT weights
-│   ├── config.json               # Model configuration
-│   └── tokenizer/                # DistilBERT tokenizer files
+│   ├── special_tokens_map.json    
+│   ├── config.json
+│   ├── vocab.txt            
+│   └── tokenizer_config.json                
 │
 ├── images/                        # Generated visualizations
-│   ├── EDA.png                   # Exploratory analysis dashboard
+│   ├── EDA.png                   
 │   ├── bigram_comparison_classicML.png
 │   ├── bigram_comparison_bert.png
 │   └── final_results_dashboard.png
-│
-├── results/                       # Training outputs and logs
-│   └── checkpoint-*/             # Model checkpoints during training
 │
 └── utils.py                       # Helper functions for preprocessing and evaluation
 ```
@@ -188,7 +190,7 @@ print(f"Prediction: {label} (Confidence: {conf:.2%})")
 ## 📊 Dataset
 
 ### Source
-Custom aggregated dataset of 44,680 news articles (38,227 after cleaning) from various sources spanning 2015-2017.
+Custom aggregated dataset of 44,680 news articles (38,227 after cleaning) from various sources spanning 2015-2017 ([Download](https://drive.google.com/file/d/16BERzRTy-EKFcJ-WuEVlzVkSWnyQkafQ/view))
 
 ### Composition
 - **Real News**: 20,820 articles (54.4%)
