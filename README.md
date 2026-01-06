@@ -2,7 +2,9 @@
 
 
 A comprehensive machine learning pipeline for detecting fake news articles using natural language processing, classical ML algorithms, and deep learning transformers. This project demonstrates the complete data science workflow from exploratory analysis through model deployment considerations, with emphasis on robustness testing and real-world limitations.
+
 [STREAMLIT LIVE DEMO](https://gzfkkcfm3gljfrkazqdjcd.streamlit.app/)
+---
 ## 📋 Table of Contents
 
 - [Overview](#overview)
