@@ -254,14 +254,6 @@ Custom aggregated dataset of 44,680 news articles (38,227 after cleaning) from v
 | XGBoost | 99.69% | 0.997 | 9 | 15 |
 | **DistilBERT** | **99.99%** | **0.9999** | **0** | **1** |
 
-### DistilBERT Confusion Matrix
-
-```
-              Predicted
-              Real  Fake
-Actual Real  [4164    0]
-       Fake  [   1 3488]
-```
 
 ### Key Performance Indicators
 
