@@ -1,8 +1,5 @@
 # Fake News Detection: A Complete Machine Learning Experiment
 
-[![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-red)](https://pytorch.org/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 A comprehensive machine learning pipeline for detecting fake news articles using natural language processing, classical ML algorithms, and deep learning transformers. This project demonstrates the complete data science workflow from exploratory analysis through model deployment considerations, with emphasis on robustness testing and real-world limitations.
 
